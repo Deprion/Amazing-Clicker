@@ -8,6 +8,7 @@ public class LocalizedText : MonoBehaviour
     private TextMeshProUGUI txt;
     void Start()
     {
+        EventManager.ChangeMainTextKeyEvent += UpdateKey;
         txt = GetComponent<TextMeshProUGUI>();
         txt.text = LocalizationManager.inst.GetValue(key);
     }

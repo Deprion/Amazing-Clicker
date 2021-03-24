@@ -70,8 +70,12 @@ public class LocalizationManager : MonoBehaviour
 #endif
     public string GetValue(string key)
     {
-        if (localizedText.ContainsKey(key))
-            return localizedText[key];
+        try
+        {
+            if (localizedText.ContainsKey(key))
+                return localizedText[key];
+        }
+        catch (System.ArgumentNullException e) { print(e.Message); };
         return "null";
     }
 }

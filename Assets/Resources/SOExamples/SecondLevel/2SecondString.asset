@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a92f4289e41e8a4a8bffebc2a84fcd0, type: 3}
+  m_Name: 2SecondString
+  m_EditorClassIdentifier: 
+  MainString: Prety_Well
+  ColorOfString:
+    topLeft: {r: 0.25169498, g: 0.355, b: 0.34466946, a: 1}
+    topRight: {r: 0.2509804, g: 0.35686275, b: 0.34509805, a: 1}
+    bottomLeft: {r: 0.49863738, g: 0.709, b: 0.6856263, a: 1}
+    bottomRight: {r: 0.49803925, g: 0.70980394, b: 0.6862745, a: 1}

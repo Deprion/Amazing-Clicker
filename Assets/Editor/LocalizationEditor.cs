@@ -1,6 +1,4 @@
-﻿#if UNITY_EDITOR
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Collections.Generic;
@@ -91,4 +89,3 @@ public class LocalizationEditor : EditorWindow
         localizationItem.RemoveAt(localizationItem.Count - 1);
     }
 }
-#endif
