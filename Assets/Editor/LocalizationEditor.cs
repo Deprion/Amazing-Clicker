@@ -24,26 +24,22 @@ public class LocalizationEditor : EditorWindow
             EditorGUILayout.PropertyField(serializedProperty);
             serializedObject.ApplyModifiedProperties();
 
-            if (GUILayout.Button("Add"))
+            if (GUILayout.Button("Add", GUILayout.MinHeight(30)))
             {
                 AddNewKeyValue();
             }
 
-            GUILayout.Space(15);
-
-            if (GUILayout.Button("Remove"))
+            if (GUILayout.Button("Remove", GUILayout.MinHeight(30)))
             {
                 RemoveLastkKeyValue();
             }
 
-            GUILayout.Space(25);
-
-            if (GUILayout.Button("Save"))
+            if (GUILayout.Button("Save", GUILayout.MinHeight(30)))
             {
                 SaveTranslationData();
             }
         }
-        if (GUILayout.Button("Load"))
+        if (GUILayout.Button("Load", GUILayout.MinHeight(30)))
         {
             LoadTranslationData();
         }
