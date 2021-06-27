@@ -3,85 +3,94 @@ using UnityEditor;
 using System.IO;
 using System.Collections.Generic;
 
-public class LocalizationEditor : EditorWindow
+namespace Editor
 {
-    private LocalizationData localizationData = new LocalizationData();
-    [SerializeField]
-    private List<LocalizationItem> localizationItem;
+    public class LocalizationEditor : EditorWindow
+    {
+        [SerializeField]
+        private List<LocalizationItem> localizationItem;
 
-    [MenuItem("Window/Localization Editor")]
-    private static void ShowWindow()
-    {
-        GetWindow<LocalizationEditor>("Localization");
-    }
-    private void OnGUI()
-    {
-        if (localizationItem != null)
+        [MenuItem("Window/Localization Editor")]
+        private static void ShowWindow()
         {
-            SerializedObject serializedObject = new SerializedObject(this);
-            SerializedProperty serializedProperty = serializedObject.FindProperty
-                ("localizationItem");
-            EditorGUILayout.PropertyField(serializedProperty);
-            serializedObject.ApplyModifiedProperties();
-
-            if (GUILayout.Button("Add", GUILayout.MinHeight(30)))
+            GetWindow<LocalizationEditor>("Localization");
+        }
+        private void OnGUI()
+        {
+            if (localizationItem != null)
             {
-                AddNewKeyValue();
+                SerializedObject serializedObject = new SerializedObject(this);
+                SerializedProperty serializedProperty = serializedObject.FindProperty
+                    ("localizationItem");
+                EditorGUILayout.PropertyField(serializedProperty);
+                serializedObject.ApplyModifiedProperties();
+
+                if (GUILayout.Button("Add", GUILayout.MinHeight(30)))
+                {
+                    AddNewKeyValue();
+                }
+
+                if (GUILayout.Button("Remove", GUILayout.MinHeight(30)))
+                {
+                    RemoveLastkKeyValue();
+                }
+
+                if (GUILayout.Button("Save", GUILayout.MinHeight(30)))
+                {
+                    SaveTranslationData();
+                }
+            }
+            if (GUILayout.Button("Load", GUILayout.MinHeight(30)))
+            {
+                LoadTranslationData();
+            }
+            if (GUILayout.Button("Create new"))
+            {
+                CreateNewTranslationData();
             }
 
-            if (GUILayout.Button("Remove", GUILayout.MinHeight(30)))
+        }
+        private void LoadTranslationData()
+        {
+            string filePath = EditorUtility.OpenFilePanel
+                ("Load", Application.streamingAssetsPath, "json");
+            if (!string.IsNullOrEmpty(filePath))
             {
-                RemoveLastkKeyValue();
+                localizationItem = new List<LocalizationItem>();
+                try
+                {
+                    localizationItem.AddRange(JsonUtility.FromJson<LocalizationData>
+                        (File.ReadAllText(filePath)).translations);
+                }
+                catch (System.NullReferenceException)
+                {
+                    Debug.Log("empty file");
+                }
             }
-
-            if (GUILayout.Button("Save", GUILayout.MinHeight(30)))
+        }
+        private void SaveTranslationData()
+        {
+            string filePath = EditorUtility.SaveFilePanel
+                ("Save", Application.streamingAssetsPath, "", "json");
+            if (!string.IsNullOrEmpty(filePath))
             {
-                SaveTranslationData();
+                LocalizationData localizationData = new LocalizationData();
+                localizationData.translations = localizationItem.ToArray();
+                File.WriteAllText(filePath, JsonUtility.ToJson(localizationData));
             }
         }
-        if (GUILayout.Button("Load", GUILayout.MinHeight(30)))
+        private void CreateNewTranslationData()
         {
-            LoadTranslationData();
-        }
-        if (GUILayout.Button("Create new"))
-        {
-            CreateNewTranslationData();
-        }
-
-    }
-    private void LoadTranslationData()
-    {
-        string filePath = EditorUtility.OpenFilePanel
-            ("Load", Application.streamingAssetsPath, "json");
-        if (!string.IsNullOrEmpty(filePath))
-        {
-            localizationData = JsonUtility.FromJson<LocalizationData>
-                (File.ReadAllText(filePath));
             localizationItem = new List<LocalizationItem>();
-            localizationItem.AddRange(localizationData.translations);
+            localizationItem.Add(null);
         }
-    }
-    private void SaveTranslationData()
-    {
-        string filePath = EditorUtility.SaveFilePanel
-            ("Save", Application.streamingAssetsPath, "", "json");
-        if (!string.IsNullOrEmpty(filePath))
+        private void AddNewKeyValue()
         {
-            localizationData.translations = localizationItem.ToArray();
-            File.WriteAllText(filePath, JsonUtility.ToJson(localizationData));
+            localizationItem.Add(null);
         }
-    }
-    private void CreateNewTranslationData()
-    {
-        localizationItem = new List<LocalizationItem>();
-        localizationItem.Add(null);
-    }
-    private void AddNewKeyValue()
-    {
-        localizationItem.Add(null);
-    }
-    private void RemoveLastkKeyValue()
-    {
-        localizationItem.RemoveAt(localizationItem.Count - 1);
+        private void RemoveLastkKeyValue()
+        {
+            localizationItem.RemoveAt(localizationItem.Count - 1);
+        }
     }
 }

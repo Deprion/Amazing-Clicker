@@ -14,13 +14,13 @@ public class DataManager : MonoBehaviour
         public LLong ClickAmount;
         public long PowerOfClick;
         public LLong AmountOfLeveling;
-        public LLong CurrentLevel;
-        public Data(LLong _clickAmount, long _powerOfClick, LLong _amountOfLeveling, LLong _currentLevel)
+        public LLong CurrentStage;
+        public Data(LLong _clickAmount, long _powerOfClick, LLong _amountOfLeveling, LLong _currentStage)
         {
             ClickAmount = _clickAmount;
             PowerOfClick = _powerOfClick;
             AmountOfLeveling = _amountOfLeveling;
-            CurrentLevel = _currentLevel;
+            CurrentStage = _currentStage;
         }
     }
     private void Awake()
@@ -36,15 +36,15 @@ public class DataManager : MonoBehaviour
             Data data = JsonUtility.FromJson<Data>(File.ReadAllText(dataPath));
             clickM.ClickAmount = data.ClickAmount;
             clickM.ClickToAdd = data.PowerOfClick;
-            gameM.AmountOfLeveling = data.AmountOfLeveling;
-            gameM.CurrentLevel = data.CurrentLevel;
+            gameM.AmountToLeveling = data.AmountOfLeveling;
+            gameM.CurrentStage = data.CurrentStage;
         }
         IsLoaded = true;
     }
     private void SaveData()
     {
         Data data = new Data(clickM.ClickAmount, clickM.ClickToAdd,
-            gameM.AmountOfLeveling, gameM.CurrentLevel);
+            gameM.AmountToLeveling, gameM.CurrentStage);
         File.WriteAllText(dataPath, JsonUtility.ToJson(data));
     }
     private void OnApplicationFocus(bool focus)
