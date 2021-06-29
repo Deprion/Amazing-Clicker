@@ -1,0 +1,15 @@
+{
+    "name": "Data",
+    "references": [
+        "GUID:e4a97dee359a0ef479afdc5453b50c91"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

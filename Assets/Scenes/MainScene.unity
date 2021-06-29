@@ -516,7 +516,90 @@ MonoBehaviour:
     IncreasableAmount: 0
     AllowToOverFlow: 1
   ClickToAdd: 1
-  mainText: {fileID: 1813566383}
+  valueText: {fileID: 1813566383}
+--- !u!1 &342059992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 342059996}
+  - component: {fileID: 342059995}
+  - component: {fileID: 342059994}
+  - component: {fileID: 342059993}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &342059993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342059992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e3a8f7f6b3e4446b40c1ab6109d18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelManager: {fileID: 342059995}
+  stringRepresents: []
+--- !u!114 &342059994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342059992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5288c4bc1a2b3034fbe0626c3cbef103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &342059995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342059992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fbbed1da283804e81d1c2f18f477e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AmountToLeveling:
+    Current: 0
+    Limit: 10
+    IsMultiplicator: 0
+    IncreasableAmount: 0
+    AllowToOverFlow: 1
+  CurrentStage:
+    Current: 0
+    Limit: 1
+    IsMultiplicator: 0
+    IncreasableAmount: 0
+    AllowToOverFlow: 0
+--- !u!4 &342059996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342059992}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,7 +847,7 @@ GameObject:
   - component: {fileID: 1718529552}
   - component: {fileID: 1718529551}
   m_Layer: 0
-  m_Name: LocalizationManager
+  m_Name: Localization
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1172,41 +1255,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2015445240}
-  - component: {fileID: 2015445238}
   - component: {fileID: 2015445239}
   m_Layer: 0
-  m_Name: Managers
+  m_Name: Data
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2015445238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2015445237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f115e0905c1a0b740a094dddf80aa3ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AmountOfLeveling:
-    Current: 0
-    Limit: 0
-    IsMultiplicator: 0
-    IncreasableAmount: 0
-    AllowToOverFlow: 0
-  CurrentLevel:
-    Current: 0
-    Limit: 1
-    IsMultiplicator: 0
-    IncreasableAmount: 0
-    AllowToOverFlow: 0
-  clickM: {fileID: 294788232}
-  stringRepresents: []
 --- !u!114 &2015445239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1220,6 +1276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickM: {fileID: 294788232}
+  levelM: {fileID: 342059995}
 --- !u!4 &2015445240
 Transform:
   m_ObjectHideFlags: 0
