@@ -13,9 +13,7 @@ namespace Localization
         private Dictionary<string, string> localizedText = new Dictionary<string, string>();
         private void Awake()
         {
-            if (inst == null) inst = this;
-            else if (inst != this) Destroy(gameObject);
-            DontDestroyOnLoad(gameObject);
+            inst = this;
             ChangeLanguage(Application.systemLanguage);
 #if UNITY_ANDROID && !UNITY_EDITOR
         StartCoroutine(LoadLocalization());

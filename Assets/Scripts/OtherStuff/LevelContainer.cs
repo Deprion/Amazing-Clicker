@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SO
+namespace Other
 {
     [CreateAssetMenu(fileName = "StringExampleArray")]
     public class LevelContainer : ScriptableObject

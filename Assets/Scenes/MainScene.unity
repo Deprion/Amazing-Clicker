@@ -526,7 +526,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 342059996}
-  - component: {fileID: 342059995}
   - component: {fileID: 342059994}
   - component: {fileID: 342059993}
   m_Layer: 0
@@ -548,8 +547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e3a8f7f6b3e4446b40c1ab6109d18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelManager: {fileID: 342059995}
-  stringRepresents: []
+  lvlM: {fileID: 761766893}
 --- !u!114 &342059994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,30 +560,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5288c4bc1a2b3034fbe0626c3cbef103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &342059995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342059992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66fbbed1da283804e81d1c2f18f477e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AmountToLeveling:
-    Current: 0
-    Limit: 10
-    IsMultiplicator: 0
-    IncreasableAmount: 0
-    AllowToOverFlow: 1
-  CurrentStage:
-    Current: 0
-    Limit: 1
-    IsMultiplicator: 0
-    IncreasableAmount: 0
-    AllowToOverFlow: 0
 --- !u!4 &342059996
 Transform:
   m_ObjectHideFlags: 0
@@ -748,6 +722,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &761766892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 761766894}
+  - component: {fileID: 761766893}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &761766893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761766892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fbbed1da283804e81d1c2f18f477e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AmountToLeveling:
+    Current: 0
+    Limit: 10
+    IsMultiplicator: 0
+    IncreasableAmount: 0
+    AllowToOverFlow: 1
+  CurrentStage:
+    Current: 0
+    Limit: 1
+    IsMultiplicator: 0
+    IncreasableAmount: 0
+    AllowToOverFlow: 0
+  levelContainer:
+  - {fileID: 11400000, guid: 325ca7e454acb314ca08ed11a220f756, type: 2}
+  - {fileID: 11400000, guid: 7e84ba23caad7e0418be29389eb2c571, type: 2}
+--- !u!4 &761766894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761766892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1588328508
 GameObject:
@@ -1276,7 +1308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickM: {fileID: 294788232}
-  levelM: {fileID: 342059995}
+  levelM: {fileID: 761766893}
 --- !u!4 &2015445240
 Transform:
   m_ObjectHideFlags: 0

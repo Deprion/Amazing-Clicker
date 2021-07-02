@@ -13,18 +13,15 @@ namespace Text
         public static string s_CurrentString;
         public static VertexGradient s_Gradient;
         [SerializeField]
-        private LevelManager levelManager;
+        private LevelManager lvlM;
         private DynamicLocalizedText mainText;
-        [SerializeField]
-        private StringRepresent[] stringRepresents;
         private LLong index = new LLong(0, 10);
         private void Awake()
         {
             EventManager.OnOverflowLimitEvent += ChangeCurrentString;
-            EventManager.OnStageChangeEvent += LoadStrings;
+            EventManager.OnStageChangeEvent += StageChanged;
             mainText = GameObject.FindGameObjectWithTag("MainText").
                 GetComponent<DynamicLocalizedText>();
-            LoadStrings();
         }
         private void Start()
         {
@@ -32,25 +29,17 @@ namespace Text
         }
         private void ChangeCurrentString()
         {
-            s_CurrentString = stringRepresents[index.Current].MainString;
-            s_Gradient = stringRepresents[index.Current].ColorOfString;
+            s_CurrentString = lvlM.levelContainer[lvlM.CurrentStage.Current]
+                .StringRepresentArray[index.Current].NameString;
+            s_Gradient = lvlM.levelContainer[lvlM.CurrentStage.Current]
+                .StringRepresentArray[index.Current].ColorOfString;
             index++;
             mainText.UpdateKey(s_CurrentString, s_Gradient);
         }
-        private void LoadStrings()
+        private void StageChanged()
         {
-            // TODO: probably replacing to GO container of SO will be better
-            switch (levelManager.CurrentStage.Current)
-            {
-                case 0: stringRepresents =
-                        Resources.LoadAll<StringRepresent>("SOExamples/FirstLevel");
-                    break;
-                case 1: stringRepresents =
-                        Resources.LoadAll<StringRepresent>("SOExamples/SecondLevel");
-                    break;
-            }
-            index.Limit = stringRepresents.Length;
-            StaticContainer.s_CurrentStageLimit = (int)index.Limit;
+            index.Limit = StaticContainer.s_CurrentStageLimit;
+            index.Current = 0;
         }
     }
 }
